@@ -9,7 +9,9 @@ import {
     Post, 
     Put
 } from '@nestjs/common';
-import { User, UsersService } from '../users.service';
+import { PatchUserDto } from '../dto/patch-user.dto';
+import { User } from '../dto/User.dto';
+import { UsersService } from '../services/users.service';
 
 @Controller('users')
 export class UsersController {
@@ -21,7 +23,7 @@ export class UsersController {
     }
 
     @Get(":uuid")
-    getUser(@Param( "uuid", ParseIntPipe ) uuid: number): User {
+    getUser(@Param( "uuid" ) uuid: string): User {
         return this.usersService.getUser(uuid);
     }
 
@@ -33,21 +35,21 @@ export class UsersController {
     @Put(":uuid")
     updateUser(
         @Body() userdata: User,
-        @Param("uuid", ParseIntPipe) uuid: number
+        @Param("uuid") uuid: string
     ): User {
         return this.usersService.updateUser(uuid, userdata)
     }
 
     @Patch(":uuid")
     editUser(
-        @Body() userdata: User,
-        @Param("uuid", ParseIntPipe) uuid: number
+        @Body() userdata: PatchUserDto,
+        @Param("uuid") uuid: string
     ): User {
         return this.usersService.editUser(uuid, userdata);
     }
 
     @Delete(":uuid")
-    deleteUser( @Param("uuid", ParseIntPipe) uuid: number ): boolean {
+    deleteUser( @Param("uuid") uuid: string ): boolean {
         return this.usersService.deleteUser(uuid);
     }
 

@@ -3,22 +3,22 @@ import { UserInterface } from "../interfaces/user.interface";
 
 export class PatchUserDto implements UserInterface {
     @IsOptional()
-    @IsNotEmpty({ message: 'Este valor no puede estar vacío' })
+    @IsNotEmpty({ message: 'Uuid no puede estar vacío' })
     @IsString({ message: '$property debe ser del tipo String' })
     uuid: string;
     
     @IsOptional()
-    @IsNotEmpty({ message: 'Este valor no puede estar vacío' })
+    @IsNotEmpty({ message: 'El nombre no puede estar vacío' })
     @IsString({ message: '$property debe ser del tipo String' })
     name: string;
     
     @IsOptional()
-    @IsNotEmpty({ message: 'Este valor no puede estar vacío' })
+    @IsNotEmpty({ message: 'El apellido no puede estar vacío' })
     @IsString({ message: '$property debe ser del tipo String' })
     lastName?: string;
     
     @IsOptional()
-    @IsNotEmpty({ message: 'Este valor no puede estar vacío' })
+    @IsNotEmpty({ message: 'El email no puede estar vacío' })
     @IsEmail()
     @IsString({ message: '$property debe ser del tipo String' })
     email: string;
